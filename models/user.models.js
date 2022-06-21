@@ -24,7 +24,7 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     idPokemon:{
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     points:{
