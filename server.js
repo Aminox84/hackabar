@@ -1,15 +1,21 @@
 require('dotenv').config();
+require('./config/db.config')
 const express = require('express');
-var cors = require('cors')
+const cors = require('cors')
 const bodyParser = require('body-parser');
-
 const app = express();
 app.use(cors());
-
+app.use(express.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+const authRoute = require('./routes/auth.route');
+
+
 
 const ports = process.env.PORT || 8080;
 app.listen(ports, console.log(`Server is running on port ${ports}`));
 
-module.exports = app;
+app.use('/', authRoute);
