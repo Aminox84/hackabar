@@ -1,4 +1,4 @@
-const User = require('../models/auth.models');
+const User = require('../models/user.models');
 const { ObjectId } = require('bson');
 
 module.exports.signon = async (req, res) => {
@@ -30,7 +30,7 @@ module.exports.signon = async (req, res) => {
           });
        })
        .catch((err) => {
-        res.status(400);
+        res.status(500);
         res.send(`Could not save user`+ err)});
 };
 
@@ -62,7 +62,7 @@ module.exports.signin = async (req, res) => {
           });
       })
       .catch((err) => {
-        res.status(401);
+        res.status(500);
         res.send(`Could not update certification with id ${req.body._id}` + err)
     });
 }
