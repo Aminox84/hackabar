@@ -2,6 +2,7 @@ const User = require('../models/user.models');
 
 module.exports.updateUser = async (req, res) => {
 
+  res.setHeader('Content-Type', 'application/json');
   if(!req.body.user){res.status(400); res.send(`Please provide all required parameters to update an account`)}
 
     var temp = {}

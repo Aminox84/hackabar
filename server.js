@@ -5,18 +5,18 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const app = express();
 app.use(cors());
-app.use(express.urlencoded({extended: true}))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}))
 
 
 const authRoute = require('./routes/auth.route');
 const userRoute = require('./routes/user.route');
-
+const pokemonRoute = require('./routes/pokemon.route');
 app.use('/', authRoute);
 app.use('/', userRoute);
-
+app.use('/pokemon', pokemonRoute);
 
 
 
