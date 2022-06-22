@@ -67,7 +67,7 @@ module.exports.signin = async (req, res) => {
                         firstname: user.firstname,
                         lastname: user.lastname, 
                         idPokemon: user.idPokemon,
-                        points: 0,
+                        points: user.points,
                         pokemons: user.pokemons
                       });
             })  
