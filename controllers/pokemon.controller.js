@@ -2,6 +2,32 @@ const Pokemon = require('../models/pokemon.models');
 const { ObjectId } = require('bson');
 
 
+module.exports.getPokemonByID = async (req, res) => {
+
+
+  const id = req.params.ID
+
+
+
+  const pokemon = await Pokemon.findOne({ id: id}, function(err, pokemon) {
+      if (err){
+          res.status(400);
+          res.send(`Bad request pokemon with id : ${id} don't exist`)
+          return;
+      } 
+      if (pokemon == undefined || pokemon == null) {
+          // If no result, result empty JSON
+          console.log(`Bad request pokemon with id : ${id} don't exist`);
+          return;
+      }
+      // Return response
+      res.status(200);
+      res.send(pokemon);
+  }).clone()
+
+
+}
+
 
 
 module.exports.getPokemon = async (req, res) => {
