@@ -18,7 +18,6 @@ module.exports.getPokemons = async (req, res) =>{
 module.exports.getPokemonsByID = async (req, res) =>{
   // Set headers
   res.setHeader('Content-Type', 'application/json');
-  var teams = [];
   if(!req.body.pokemons){
     res.status(400);
     res.send(`Please provide all required parameters`)

@@ -8,17 +8,17 @@ module.exports.updateUser = async (req, res) => {
     var temp = {}
     for (var key in req.body.user) {
         if (req.body.user.hasOwnProperty(key)) {
-            temp[key]=p[key];
+            temp[key]=req.body.user[key];
         }
     }
-
+    console.log(temp)
   if(req.body.user)
   // Update object from database
   User.updateOne({ _id: req.body.user.id }, temp)
   .then(() => {
       // Update was successful
       res.status(200);
-      console.log("User with _id " + req.body._id + " successfully updated");
+      res.send("User with _id " + req.body.user.id + " successfully updated");
 
   })
   .catch(err => {
