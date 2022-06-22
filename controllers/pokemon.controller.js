@@ -2,6 +2,19 @@ const Pokemon = require('../models/pokemon.models');
 const { ObjectId } = require('bson');
 
 
+
+module.exports.getPokemons = async (req, res) =>{
+      // Set headers
+      res.setHeader('Content-Type', 'application/json');
+  
+      // Get all entreprises from database
+      const pokemons = await Pokemon.find().lean();
+  
+      // Return response
+      res.status(200);
+      res.send(JSON.stringify(pokemons));
+}
+
 module.exports.getPokemonByID = async (req, res) => {
 
 

@@ -14,9 +14,11 @@ app.use(express.urlencoded({
 const authRoute = require('./routes/auth.route');
 const userRoute = require('./routes/user.route');
 const pokemonRoute = require('./routes/pokemon.route');
+const pokemonsRoute = require('./routes/pokemons.route');
 app.use('/', authRoute);
 app.use('/', userRoute);
 app.use('/pokemon', pokemonRoute);
+app.use('/pokemons', pokemonsRoute);
 
 
 
