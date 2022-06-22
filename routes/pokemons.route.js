@@ -5,5 +5,5 @@ const pokemonController=require('../controllers/pokemon.controller')
 // router.post('/add',pokemonController.addPokemon)
 
 router.get('/',pokemonController.getPokemons)
-
+router.get('/ids',pokemonController.getPokemonsByID)
 module.exports=router;

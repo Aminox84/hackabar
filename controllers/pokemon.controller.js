@@ -15,6 +15,24 @@ module.exports.getPokemons = async (req, res) =>{
       res.send(JSON.stringify(pokemons));
 }
 
+module.exports.getPokemonsByID = async (req, res) =>{
+  // Set headers
+  res.setHeader('Content-Type', 'application/json');
+  var teams = [];
+  if(!req.body.pokemons){
+    res.status(400);
+    res.send(`Please provide all required parameters`)
+    return;
+  }  
+  
+  const pokemons = await Pokemon.find({"_id" : {"$in" : req.body.pokemons}}).lean();
+
+  res.status(200);
+  res.send(JSON.stringify(pokemons));
+
+  
+}
+
 module.exports.getPokemonByID = async (req, res) => {
 
 
