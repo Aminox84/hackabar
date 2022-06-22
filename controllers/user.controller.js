@@ -31,3 +31,14 @@ module.exports.updateUser = async (req, res) => {
 };
 
 
+module.exports.getUsers = async (req, res) => {
+  // Set headers
+  res.setHeader('Content-Type', 'application/json');
+
+  // Get all entreprises from database
+  const user = await User.find().lean();
+
+  // Return response
+  res.status(200);
+  res.send(JSON.stringify(user));
+}
