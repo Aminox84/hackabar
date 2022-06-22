@@ -6,7 +6,7 @@ module.exports.getQuiz = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
     // Get all entreprises from database
-    const quiz = await Quiz.find().lean();
+    const quiz = await Quiz.findById("62b31648aa56f966af36627a").lean();
 
     // Return response
     res.status(200);
